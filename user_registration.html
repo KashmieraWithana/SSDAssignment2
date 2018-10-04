@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="jquery-2.2.0.min.js"></script>
+    <script type="text/javascript">
+
+        function getToken(tokenKey){
+
+            var name = tokenKey + "=";
+            
+            var cKeyValuePairs = decodeURIComponent(document.cookie).split(';');
+
+            for(i = 0; i < cKeyValuePairs.length; i++) {
+
+                var attributeKey = cKeyValuePairs[i];
+                attributeKey = attributeKey.replace(/^\s+/g, '');
+
+                if (attributeKey.indexOf(name) == 0) {
+                    return attributeKey.substring(name.length, attributeKey.length);
+                }
+            }
+            return "";
+        }
+
+        $(document).ready(function(){
+            token = getToken("CSRF_TOKEN");
+
+            var tokenField = document.createElement("input");
+            tokenField.setAttribute("type", "hidden");
+            tokenField.setAttribute("name", "csrf_token");
+            tokenField.setAttribute("value", token);
+
+            document.getElementById("registrationForm").appendChild(tokenField);
+        });
+    </script>
+    <style>
+        body {background-color: rgb(182, 219, 134);}
+        button {
+                background-color: white;
+                color: black;
+                border: 2px solid rgb(63, 139, 13); /* Green */
+            }
+            
+    </style>
+</head>    
+<body>
+    <div align="center" class="container" style="width:40%">
+        <h1 align="center">New User Registration</h1>
+        <br>
+        <br>
+        <div align="left">
+            <form id="registrationForm" action="session_check.php" method="POST">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input name="username" type="text" class="form-control" id="username">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input name="password" type="text" class="form-control" id="password">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <input name="status" type="text" class="form-control" id="status">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="phone">Phone:</label>
+                    <input name="phone" type="text" class="form-control" id="phone">
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="address">Home Address:</label>
+                    <input name="address" type="text" class="form-control" id="address">
+                </div>
+                <button align="center" type="submit" >Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

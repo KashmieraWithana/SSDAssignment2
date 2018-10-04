@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        body {background-color: rgb(182, 219, 134);}
+        button {
+                background-color: white;
+                color: black;
+                border: 2px solid rgb(63, 139, 13); /* Green */
+            }
+            
+    </style>
+</head>
+<body>
+    <div align="center" class="container" style="width:40%">
+        <h1 align="center">Login</h1>
+        <br>
+        <br>
+        <div align="left">
+            <form action="login.php" method="POST">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input name="username" type="text" class="form-control" id="username" required>
+                </div>
+                <br>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input name="password" type="password" class="form-control" id="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
